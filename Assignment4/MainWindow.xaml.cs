@@ -56,6 +56,7 @@ namespace Assignment4
             };
             db.Employees.Add(employee);
             db.SaveChanges();
+            employees_list.Items.Refresh();
         }
 
         private void employee_list_selectionchange(object sender, SelectionChangedEventArgs e)
@@ -98,6 +99,8 @@ namespace Assignment4
                 emp.Telephone = telephone_txtbox.Text;
 
                 db.SaveChanges();
+                employees_list.Items.Refresh();
+
             }
         }
 
@@ -112,7 +115,20 @@ namespace Assignment4
             {
                 db.Employees.Remove(emp);
                 db.SaveChanges();
+                employees_list.Items.Refresh();
+
             }
+        }
+
+        private void filter_button_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeDBEntities Db = new EmployeeDBEntities();
+            var employees = from employee in Db.Employees
+                                where employee.FirstName.Contains(filter_txtbox.Text) || employee.LastName.Contains(filter_txtbox.Text)
+                                orderby employee.EmpID
+                                select employee;
+            employees_list.ItemsSource = employees.ToList();
+            employees_list.Items.Refresh();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment4"
         mc:Ignorable="d"
-        Title="Employee Details" ResizeMode="CanMinimize" Width="1050" Height="720" FontSize="16" FontFamily="Ebrima">
+        Title="Employee Details" ResizeMode="CanMinimize" Width="1050" Height="730" FontSize="16" FontFamily="Ebrima">
     <Grid>
         
         <StackPanel>
@@ -71,7 +71,12 @@
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" x:Name="labels_spanel" Margin="40,0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    
+
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,40" HorizontalAlignment="Right">
+                        <TextBox x:Name="filter_txtbox" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Width="200"/>
+                        <Button x:Name="filter_button" Content="Filter" Width="70" Margin="20,0,10,0" Click="filter_button_Click"/>
+                    </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label x:Name="firstName_lbl" Content="First Name:" Width="150"/>
                         <TextBox x:Name="firstName_txtbox" Text="" VerticalContentAlignment="Center" TextWrapping="Wrap" Width="200"/>
